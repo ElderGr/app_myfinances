@@ -14,7 +14,7 @@ export const Container = styled.View<ContainerProps>`
   border-radius: 10px;
   margin-bottom: 8px;
   border-width: 2px;
-  border-color: #232129;
+  border-color: #C4C4C4;
   flex-direction: row;
   align-items: center;
   ${(props: any) =>
@@ -25,7 +25,7 @@ export const Container = styled.View<ContainerProps>`
   ${(props: any) =>
     props.isFocused &&
     css`
-      border-color: #ff9000;
+      border-color: #00AEE4;
     `}
 `;
 

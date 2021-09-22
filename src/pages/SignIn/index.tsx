@@ -82,7 +82,7 @@ const Dashboard: React.FC = () => {
         </ScrollView>
 
         <CreateAccountButton onPress={() => console.log('testando')}>
-          <Icon name="log-in" size={20} color="#ff9000" />
+          <Icon name="log-in" size={20} color="#00AEE4" />
           <CreateAccountButtonText>Criar uma conta</CreateAccountButtonText>
         </CreateAccountButton>
       </KeyboardAvoidingView>
