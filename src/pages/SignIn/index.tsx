@@ -10,7 +10,7 @@ import {
   CreateAccountButton,
   CreateAccountButtonText,
   TitleContainer
-} from './style'
+} from './styles'
 import Icon from 'react-native-vector-icons/Feather';
 
 import { useNavigation } from '@react-navigation/native';
@@ -20,7 +20,7 @@ import { FormHandles } from '@unform/core';
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 
-const Dashboard: React.FC = () => {
+const SignIn: React.FC = () => {
   const navigation = useNavigation();
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
@@ -81,7 +81,7 @@ const Dashboard: React.FC = () => {
           </Container>
         </ScrollView>
 
-        <CreateAccountButton onPress={() => console.log('testando')}>
+        <CreateAccountButton onPress={() => navigation.navigate('SignUp')}>
           <Icon name="log-in" size={20} color="#00AEE4" />
           <CreateAccountButtonText>Criar uma conta</CreateAccountButtonText>
         </CreateAccountButton>
@@ -89,4 +89,4 @@ const Dashboard: React.FC = () => {
   );
 }
 
-export default Dashboard;
+export default SignIn;
