@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, TextInput, View } from 'react-native';
 
 import {
@@ -19,11 +19,21 @@ import { Form } from '@unform/mobile'
 import { FormHandles } from '@unform/core';
 import Input from '../../components/Input'
 import Button from '../../components/Button'
+import { useAuth } from '../../hooks/Auth';
 
 const SignIn: React.FC = () => {
   const navigation = useNavigation();
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
+
+  const { signIn, user } = useAuth()
+
+  const handleFormSubmit = useCallback(async () => {
+    await signIn({
+      email: '',
+      password: ''
+    })
+  }, [])
 
   return (
     <KeyboardAvoidingView
@@ -44,7 +54,7 @@ const SignIn: React.FC = () => {
             <Form
               ref={formRef}
               style={{ width: '100%' }}
-              onSubmit={() => console.log('testando')}
+              onSubmit={handleFormSubmit}
             >
               <Input
                 autoCorrect={false}
