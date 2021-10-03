@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from '../pages/Home';
+import Spending from '../pages/Spending';
 
 const App = createStackNavigator();
 
@@ -15,6 +16,7 @@ const AuthRoutes: React.FC = () => (
     }}
   >
     <App.Screen name="Home" component={Home} />
+    <App.Screen name="Spending" component={Spending} />
   </App.Navigator>
 );
 

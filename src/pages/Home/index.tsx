@@ -74,7 +74,7 @@ const Home: React.FC = () => {
       </Header>
       {/* <Button title="Sair" onPress={signOut} /> */}
       <FeatureContainer>
-        <FeatureItem>
+        <FeatureItem onPress={() => navigate('Spending')}>
           <View>
             <FeatureItemSubtitle>Seu saldo atual</FeatureItemSubtitle>
             <FeatureItemTitle>R$ 2.000,00</FeatureItemTitle>
