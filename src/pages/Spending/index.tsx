@@ -1,18 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useCallback, useEffect, useState } from 'react';
-import { Button, ScrollView, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { ptBR } from 'date-fns/locale'
 
-import { useAuth } from '../../hooks/Auth';
 import {
   Container,
   Header,
-  HeaderTitle,
-  UserName,
-  ProfileContainer,
-  ProfileButton,
-  FeatureContainer,
   FeatureItem,
   FeatureItemTitle,
   FeatureItemSubtitle,
@@ -37,10 +31,8 @@ export interface Provider {
 }
 
 const Home: React.FC = () => {
-  const { signOut, user } = useAuth();
   const { navigate } = useNavigation();
 
-  const [providers, setProviders] = useState<Provider[]>([]);
   const [months, setMonths] = useState<number[]>([])
 
   useEffect(() => {
@@ -55,27 +47,11 @@ const Home: React.FC = () => {
 
     mountMonths()
   }, [])
-  // useEffect(() => {
-  //   api.get('providers').then(response => {
-  //     setProviders(response.data);
-  //   });
-  // }, []);
-
-  // const navigateToProfile = useCallback(() => {
-  //   navigate('Profile');
-  // }, [navigate]);
-
-  // const navigateToCreateAppointment = useCallback(
-  //   (providerId: string) => {
-  //     navigate('CreateAppointment', { providerId });
-  //   },
-  //   [navigate],
-  // );
 
   return (
     <Container>
       <Header>
-        <LabelContainer>
+        <LabelContainer onPress={() => navigate('Home')}>
           <Icon name='chevron-left' size={30} />
           <Text>Voltar</Text>
         </LabelContainer>
@@ -91,7 +67,7 @@ const Home: React.FC = () => {
           </View>
         </MainInfoContainer>
 
-        <FeatureItem>
+        <FeatureItem onPress={() => navigate('BalanceUpdate')}>
           <Icon name='refresh-ccw' size={30} />
           <FeatureItemTextContainer>
             <FeatureItemSubtitle>Atualizar saldo</FeatureItemSubtitle>
@@ -130,8 +106,8 @@ const Home: React.FC = () => {
         </View>
       </Header>
       <MonthsMainContainer>
-        {months.map((month) => (
-          <MonthContainer>
+        {months.map((month, index) => (
+          <MonthContainer key={index}>
             <MonthContainerTitle>
               <MonthTitle>{month}</MonthTitle>
               <Icon name='chevron-right' size={20} />
